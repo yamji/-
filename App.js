@@ -1,11 +1,9 @@
  import React, {useState} from 'react';
  import TodoList from './components/TodoList';
- import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+ import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+ import { NavigationContainer } from '@react-navigation/native';
  import TodoInsert from './components/TodoInsert';
- import { NavigationContainer } from '@react-navigation/native'; 
- import { createStackNavigator } from '@react-navigation/stack';
-import { menu } from './components/menu';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+ import { createDrawerNavigator } from '@react-navigation/drawer';
  const App = () => {
    // todos: {id: Number, textValue: string, checked: boolean }
    const [todos, setTodos] = useState([]);
@@ -28,26 +26,22 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
        ),
      );
    };
- 
    const Drawer = createDrawerNavigator();
    return (
      <SafeAreaView style={styles.container}>
-      <NavigationContainer> 
-            <Drawer.Navigator
-              initialRouteName="menu"
-              drawerType="front">
-                <Drawer.Screen name="menu" component={menu}>
-                  
-                </Drawer.Screen>
-            </Drawer.Navigator>
-        </NavigationContainer> 
+      <View style={styles.touch}>
       <TouchableOpacity
         onPress={()=>{
         navigation.navigate()
       }}>
-        <Text style={styles.btn}>←</Text>
+        <Image source={require("./assets/hee.png")}
+        style = {styles.img}/>
+          <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
       </TouchableOpacity>
-       <Text style={styles.appTitle}>That's me</Text>
+      <Text style={styles.appTitle}>That's me</Text>
+      </View>
        <View style={styles.card}>
          <TodoInsert onAddTodo={addTodo} />
          <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
@@ -61,22 +55,36 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
      flex: 1,
      backgroundColor: '#FF7F50',
    },
+   touch:{
+    flexDirection:'row',
+   },
    appTitle: {
      color: '#fff',
-     fontSize: 36,
+     fontSize: 40,
      marginTop: 30,
      marginBottom: 30,
      fontWeight: '300',
      textAlign: 'center',
+     marginLeft: 350,
      backgroundColor: '	#FF7F50',
+     
    },
+  
+   
    card: {
      backgroundColor: '#fff',
      flex: 1,
      borderTopLeftRadius: 10, // to provide rounded corners
      borderTopRightRadius: 10, // to provide rounded corners
-     marginLeft: 10,
-     marginRight: 10,
+     marginLeft: 30,
+     marginRight: 30,
+   },
+   img: {
+      width:130,
+      height:50,
+      marginTop: 30,
+     marginBottom: 30,
+      resizeMode:'contain',
    },
  });
  
