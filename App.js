@@ -1,9 +1,7 @@
  import React, {useState} from 'react';
  import TodoList from './components/TodoList';
  import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
- import { NavigationContainer } from '@react-navigation/native';
  import TodoInsert from './components/TodoInsert';
- import { createDrawerNavigator } from '@react-navigation/drawer';
  const App = () => {
    // todos: {id: Number, textValue: string, checked: boolean }
    const [todos, setTodos] = useState([]);
@@ -26,7 +24,7 @@
        ),
      );
    };
-   const Drawer = createDrawerNavigator();
+  
    return (
      <SafeAreaView style={styles.container}>
       <View style={styles.touch}>
@@ -36,9 +34,6 @@
       }}>
         <Image source={require("./assets/hee.png")}
         style = {styles.img}/>
-          <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
       </TouchableOpacity>
       <Text style={styles.appTitle}>That's me</Text>
       </View>
@@ -65,7 +60,7 @@
      marginBottom: 30,
      fontWeight: '300',
      textAlign: 'center',
-     marginLeft: 350,
+     marginLeft: 530,
      backgroundColor: '	#FF7F50',
      
    },
@@ -74,13 +69,13 @@
    card: {
      backgroundColor: '#fff',
      flex: 1,
-     borderTopLeftRadius: 10, // to provide rounded corners
+     borderTopLeftRadius: 10, // to provide rounded cornerss
      borderTopRightRadius: 10, // to provide rounded corners
      marginLeft: 30,
      marginRight: 30,
    },
    img: {
-      width:130,
+      width:100,
       height:50,
       marginTop: 30,
      marginBottom: 30,
